@@ -1,7 +1,49 @@
 import React, { Fragment, useState } from 'react';
 import { Alert} from 'react-bootstrap';
-//const urlPlace = 'http://jsonplaceholder.typicode.com/users'
+import styled from '@emotion/styled';
 
+const Contenedor = styled.div`
+//position: center;
+width: 30%;
+padding: 20px;
+//display: flex;
+justify-content: center;
+//border: 1px solid #DCDCDC ;
+margin: 0 auto;
+font-family: Arial, Helvetica, sans-serif;
+`;
+
+const Formulario = styled.div`
+justify-content: center;
+text-align: left;
+padding: 20px;
+//display:flex;
+    justify-content: center;
+    align-items: center;
+width: 50%;
+`;
+
+const Label = styled.label`
+
+width: 100%;
+    height: 50%;
+    font-size: medium;
+    border-radius: 5px;
+`;
+const Button = styled.button`
+  color: ##87CEEB;
+  margin-right: 0;
+  margin-botton: 0;
+  width: 100%;
+  margin: 5px;
+  border: 1px solid #DCDCDC ;
+  border-radius: 5px;
+  :hover {
+      background-color: #6495ED	;
+      color: white;
+      border: 1px solid white;
+  }
+`;
 const Registro = ({crearCuenta}) => {
     const [cuenta, setCuenta] = useState({
         name:'', username:'', email:''  
@@ -32,19 +74,25 @@ const Registro = ({crearCuenta}) => {
     }
     return (
     <Fragment>
-        <h2>Registrarse</h2>
+        <Contenedor>
+        
         { error ? <Alert variant="danger"> Tenés que completar todos los campos </Alert> : null }
+        
+        <Formulario>
+        <h2>Registrarse</h2>
         <form onSubmit={submitCuenta} >
-            <label> Nombre </label>
+            <Label> Nombre </Label>
             <input type="text" name="name" value={name} placeholder="Nombre" onChange={handleChange}/>
-            <label> Nombre de Usuario </label>
+            <Label> Nombre de Usuario </Label>
             <input type="text" name="username" value={username} placeholder="Nombre de usuario" onChange={handleChange}/>
-            <label> Email </label>
+            <Label> Email </Label>
             <input type="text" name="email" value={email} placeholder="Email" onChange={handleChange}/>
-            <button type="submit">
+            <Button type="submit">
                 Crear cuenta
-            </button>
+            </Button>
         </form>
+        </Formulario>
+        </Contenedor>
     </Fragment> 
     );
 }
